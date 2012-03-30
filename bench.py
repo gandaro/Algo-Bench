@@ -6,6 +6,7 @@ import os.path
 from glob import glob
 from math import factorial
 from timeit import Timer
+from argparse import ArgumentParser
 
 MODULES = ['enterprise_programmer', 'expert_programmer', 'firstyear_c',
            'firstyear_pascal', 'firstyear_python', 'firstyear_sicp',
@@ -23,15 +24,15 @@ def bench(name, result, function, *args):
 
 
 if __name__ == '__main__':
-    try:
-        r = sys.argv[1]
-    except IndexError:
-        r = 5000
+    p = ArgumentParser(description='Benchmark factorial algorithms.')
+    p.add_argument('--number', '-n', type=int, default=5000,
+                   help='Number to calculate its factorial.', required=False)
+    r = p.parse_args().number
+
+    sys.setrecursionlimit(r * 2)
 
     global args
     args = [r]
-
-    sys.setrecursionlimit(r * 2)
 
     correct = factorial(r)
 
