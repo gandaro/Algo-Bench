@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 import os.path
 
@@ -14,7 +16,7 @@ MODULES = ['enterprise_programmer', 'expert_programmer', 'firstyear_c',
 def bench(name, result, function, *args):
     if function(*args) != result:
         print >>sys.stderr, 'Fail!  "%s" failed!' % name
-        return
+        return 0
 
     return Timer('function(*args)',
                  'from __main__ import function, args').timeit(20)/20
@@ -39,6 +41,6 @@ if __name__ == '__main__':
             m = __import__('algos.%s' % x, fromlist=['factorial'])
             global function
             function = m.factorial
-            print bench(m.__name__, correct, function, r) or 0, 'seconds.'
+            print bench(m.__name__, correct, function, r), 'seconds.'
         except Exception as e:
             print >>sys.stderr, 'ERROR:', e.message
