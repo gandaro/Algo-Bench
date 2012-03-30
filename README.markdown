@@ -1,0 +1,2 @@
+Just an attempt to benchmark the algorithms from
+[here](https://gist.github.com/289467) out of morbid curiosity.

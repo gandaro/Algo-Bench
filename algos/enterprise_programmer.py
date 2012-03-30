@@ -43,5 +43,5 @@ class StandardMathematicsSystem(MathematicsSystem):
         return result
 
 
-def f(x):
+def factorial(x):
     return StandardMathematicsSystem.getInstance(new (InternalBase, new (IntegralNumber, 2))).calculateFactorial(new (IntegralNumber, x))

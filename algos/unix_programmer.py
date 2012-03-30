@@ -1,3 +1,3 @@
 import os
-def fact(x):
+def factorial(x):
     os.system('factorial ' + str(x))
