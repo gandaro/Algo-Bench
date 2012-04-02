@@ -35,10 +35,14 @@ if __name__ == '__main__':
     args = [r]
 
     for x in MODULES:
-        print ':::::::', x, ':::::::'
+        print '#', x
+
         try:
             m = __import__('algos.%s' % x, fromlist=['factorial'])
             function = m.factorial
             print bench(m.__name__, correct), 'seconds.'
+
         except Exception as e:
             print >>sys.stderr, 'ERROR:', e.message
+
+        print
