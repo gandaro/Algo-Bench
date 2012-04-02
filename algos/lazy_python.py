@@ -1,2 +1,5 @@
-def factorial(x):
-    return x > 1 and x * factorial(x - 1) or 1
+def fact(x):
+    return x > 1 and x * fact(x - 1) or 1
+
+
+factorial = fact

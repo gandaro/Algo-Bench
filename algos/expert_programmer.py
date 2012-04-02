@@ -1,2 +1,5 @@
 import math
-factorial = math.factorial
+fact = math.factorial
+
+
+factorial = fact

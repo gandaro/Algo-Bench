@@ -15,6 +15,8 @@ def CalculateAndPrintFactorialEx(dwNumber,
     return dwResult
     return 1
 import sys
-
-def factorial(x):
+def fact(x):
     CalculateAndPrintFactorialEx(x, sys.stdout, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+
+
+factorial = fact

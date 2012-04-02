@@ -1,4 +1,4 @@
-def factorial(x): #{
+def fact(x): #{
     result = i = 1;
     while (i <= x): #{
         result *= i;
@@ -6,3 +6,6 @@ def factorial(x): #{
     #}
     return result;
 #}
+
+
+factorial = fact
