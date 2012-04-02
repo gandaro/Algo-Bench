@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import sys
-import os.path
 
 from glob import glob
 from math import factorial
@@ -14,7 +13,9 @@ MODULES = ['enterprise_programmer', 'expert_programmer', 'firstyear_c',
            'python_expert', 'python_hacker', 'unix_programmer',
            'windows_programmer']
 
-def bench(name, result, function, *args):
+global function, args
+
+def bench(name, result):
     if function(*args) != result:
         print >>sys.stderr, 'Fail!  "%s" failed!' % name
         return 0
@@ -30,18 +31,14 @@ if __name__ == '__main__':
     r = p.parse_args().number
 
     sys.setrecursionlimit(r * 2)
-
-    global args
-    args = [r]
-
     correct = factorial(r)
+    args = [r]
 
     for x in MODULES:
         print ':::::::', x, ':::::::'
         try:
             m = __import__('algos.%s' % x, fromlist=['factorial'])
-            global function
             function = m.factorial
-            print bench(m.__name__, correct, function, r), 'seconds.'
+            print bench(m.__name__, correct), 'seconds.'
         except Exception as e:
             print >>sys.stderr, 'ERROR:', e.message
